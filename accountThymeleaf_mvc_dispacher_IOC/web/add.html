@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adding account</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+                                    <!--添加一个超链接,负责返回主页-->
+        <h1 class="title"><a href="/account.do">Add account</a></h1>
+    </header>
+                                <!--提交后跳转道add.do    -->
+    <form method="post" action="/account.do" >
+        <input type="hidden" name = "operate" value = "add"/>
+        <table class="table">
+<!--            <input type="hidden" name="id">-->
+            <div>
+
+                <tr>
+                    <td>NAME</td>
+                    <td><input type="text" name="name"/></td>
+                </tr>
+                <tr>
+                    <td>BALANCE</td>
+                    <td><input type="text" name="balance"/></td>
+                </tr>
+                <tr>
+                    <td>Birthday</td>
+                    <td><input type="text" name="birthday"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="submit"/></td>
+                </tr>
+            </div>
+
+            <!-- 循环渲染账户信息 -->
+        </table>
+
+    </form>
+</div>
+</body>
+</html>

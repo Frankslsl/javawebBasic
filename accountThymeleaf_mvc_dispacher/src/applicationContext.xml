@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans>
+<!--Servlet中设计的名字对应的是account,那么就要AccountController来处理    -->
+    <bean id="account" class="com.controllers.AccountController"/>
+</beans>

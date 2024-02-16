@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Account List</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1 class="title"><a th:href="@{/search.do}">Edit account</a></h1>
+    </header>
+    <form method="post" th:action="@{/update.do}">
+        <table class="table" th:object="${account}">
+            <input type="hidden" name="id" th:value="*{getId()}">
+            <div>
+                <tr>
+                    <td>ID</td>
+                    <td th:text="${account.getId()}"></td>
+                    <td>Cant change the id</td>
+                </tr>
+                <tr>
+                    <td>NAME</td>
+                    <td th:text="*{getName()}"></td>
+                    <td><input type="text" name="name" th:value="*{getName()}"/></td>
+                </tr>
+                <tr>
+                    <td>BALANCE</td>
+                    <td th:text="*{getBalance()}"></td>
+                    <td><input type="text" name="balance" th:value="*{getBalance()}"/></td>
+                </tr>
+                <tr>
+                    <td>Birthday</td>
+                    <td th:text="*{getBirthday()}"></td>
+                    <td><input type="text" name="birthday" th:value="*{getBirthday()}"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="submit"/></td>
+<!--                    <td><button th:onclick="|accountDel(*{getId()})|">Delete</button></td>-->
+                </tr>
+            </div>
+
+            <!-- 循环渲染账户信息 -->
+        </table>
+
+    </form>
+</div>
+</body>
+</html>

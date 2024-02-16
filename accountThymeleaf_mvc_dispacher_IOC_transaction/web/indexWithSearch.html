@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account List</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">Account List</h1>
+      </header>
+      <table class="table">
+        <div>
+          <form th:action="@{account.do}" method="post">
+            <input type="hidden" name="oper" value="search" />
+            <label for="keyword">Input the keyword</label>
+            <input type="text" name="keyword" id="keyword" th:value="${session.keyword}"/>
+            <input type="submit" value="search" />
+          </form>
+        </div>
+        <tr class="table-header">
+          <th>ID1</th>
+          <th>Name</th>
+          <th>Balance</th>
+          <th>Birthday</th>
+          <th>Operation</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(session.list)}">
+          <td colspan="4">No such record</td>
+        </tr>
+        <tr
+          th:unless="${#lists.isEmpty(session.list)}"
+          th:each="account : ${session.list}"
+        >
+          <!--            <td><a th:text="${account.id}" th:href="@{'edit.do?id='+ ${account.getId()}}"></a></td>-->
+          <td>
+            <a
+              th:text="${account.id}"
+              th:href="@{account.do(id=${account.getId()},operate='edit')}"
+            ></a>
+          </td>
+          <td th:text="${account.name}"></td>
+          <td th:text="${account.balance}"></td>
+          <td th:text="${account.birthday}"></td>
+          <td>
+            <button th:onclick="|accountDel(${account.getId()})|">
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5"><a href="add.html">add new record</a></td>
+        </tr>
+      </table>
+      <div>
+        <button
+          type="button"
+          value="first Page"
+          th:onclick="|page(1,${session.pageTotal})|"
+        >
+          first Page
+        </button>
+        <button
+          type="button"
+          value="preview"
+          th:onclick="|page(${session.pageNum}-1,${session.pageTotal})|"
+        >
+          previous
+        </button>
+        <button
+          type="button"
+          value="next"
+          th:onclick="|page(${session.pageNum}+1,${session.pageTotal})|"
+        >
+          next
+        </button>
+        <button
+          type="button"
+          value="last Page"
+          th:onclick="|page(${session.pageTotal},${session.pageTotal})|"
+        >
+          last Page
+        </button>
+      </div>
+    </div>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>

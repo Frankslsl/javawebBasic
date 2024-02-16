@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="accountThymeleaf_mvc_dispacher_IOC_transaction:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/accountThymeleaf_mvc_dispacher_IOC_transaction_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="accountThymeleaf_mvc_dispacher_IOC_transaction/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="accountThymeleaf_mvc_dispacher_IOC_transaction" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
